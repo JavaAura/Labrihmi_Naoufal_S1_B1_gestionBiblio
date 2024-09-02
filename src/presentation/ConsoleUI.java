@@ -6,6 +6,7 @@ import metier.Bibliotheque;
 import metier.Document;
 import metier.Livre;
 import metier.Magazine;
+import utilitaire.DateUtils;
 
 public class ConsoleUI {
     private Bibliotheque bibliotheque;
@@ -55,16 +56,15 @@ public class ConsoleUI {
 
     private void ajouterDocument() {
         System.out.print("Entrez le type de document (livre/magazine) : ");
-        String type = scanner.nextLine().trim();
-        
+        String type = scanner.nextLine().trim(); // Read and trim input
         String titre = demanderInput("titre");
         String auteur = demanderInput("auteur");
-        LocalDate datePublication = LocalDate.now();
+        LocalDate datePublication = demanderDatePublication(); // Get the actual publication date
         int nombreDePages = demanderNombreDePages();
-        scanner.nextLine(); // Consume the leftover newline after entering the number of pages
+        scanner.nextLine();
     
         if ("livre".equalsIgnoreCase(type)) {
-            String isbn = demanderISBN(); 
+            String isbn = demanderISBN(); // Ensure ISBN is valid
             Livre livre = new Livre(Bibliotheque.getNextLivreId(), titre, auteur, datePublication, nombreDePages, isbn);
             bibliotheque.ajouterDocument(livre);
             System.out.println("Livre ajouté avec ID : " + livre.getId());
@@ -78,7 +78,7 @@ public class ConsoleUI {
             System.out.println("Type de document inconnu. Veuillez entrer 'livre' ou 'magazine'.");
         }
     }
-    
+
     private void traiterDocument(String action) {
         System.out.print("Entrez l'ID du document à " + action + " : ");
         String id = scanner.nextLine().trim();
@@ -115,6 +115,22 @@ public class ConsoleUI {
         return scanner.nextInt();
     }
 
+    private LocalDate demanderDatePublication() {
+        LocalDate date = null;
+        while (date == null) {
+            System.out.print("Entrez la date de publication (format: yyyy-MM-dd) : ");
+            String dateInput = scanner.nextLine().trim();
+            date = DateUtils.parseDate(dateInput); // Use DateUtils to parse the date
+
+            // Validate the parsed date
+            if (!DateUtils.isDateValid(date)) {
+                System.out.println("Date invalide ou hors de portée. Veuillez réessayer.");
+                date = null; // Reset date to prompt again
+            }
+        }
+        return date;
+    }
+
     private String demanderISBN() {
         while (true) {
             System.out.print("Entrez l'ISBN : ");
@@ -130,7 +146,4 @@ public class ConsoleUI {
             }
         }
     }
-    
-    
-    
 }
