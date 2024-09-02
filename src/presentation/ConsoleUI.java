@@ -55,14 +55,16 @@ public class ConsoleUI {
 
     private void ajouterDocument() {
         System.out.print("Entrez le type de document (livre/magazine) : ");
-        String type = scanner.nextLine().trim(); // Read and trim input
+        String type = scanner.nextLine().trim();
+        
         String titre = demanderInput("titre");
         String auteur = demanderInput("auteur");
-        LocalDate datePublication = LocalDate.now(); // Use current date
+        LocalDate datePublication = LocalDate.now();
         int nombreDePages = demanderNombreDePages();
-
+        scanner.nextLine(); // Consume the leftover newline after entering the number of pages
+    
         if ("livre".equalsIgnoreCase(type)) {
-            String isbn = demanderISBN(); // Ensure ISBN is valid
+            String isbn = demanderISBN(); 
             Livre livre = new Livre(Bibliotheque.getNextLivreId(), titre, auteur, datePublication, nombreDePages, isbn);
             bibliotheque.ajouterDocument(livre);
             System.out.println("Livre ajouté avec ID : " + livre.getId());
@@ -76,7 +78,7 @@ public class ConsoleUI {
             System.out.println("Type de document inconnu. Veuillez entrer 'livre' ou 'magazine'.");
         }
     }
-
+    
     private void traiterDocument(String action) {
         System.out.print("Entrez l'ID du document à " + action + " : ");
         String id = scanner.nextLine().trim();
@@ -114,20 +116,21 @@ public class ConsoleUI {
     }
 
     private String demanderISBN() {
-        String isbn;
         while (true) {
             System.out.print("Entrez l'ISBN : ");
-            isbn = scanner.nextLine().trim(); // Trim any extra spaces
-
-            // Clean and validate the ISBN
+            String isbn = scanner.nextLine().trim();
+    
             String cleanedIsbn = isbn.replaceAll("[-\\s]", "");
+    
+            // Validate the ISBN
             if (cleanedIsbn.length() == 13 && cleanedIsbn.matches("\\d+")) {
-                return cleanedIsbn; // Return if ISBN is valid
+                return cleanedIsbn;
             } else {
-                // Clear the current line and print the error message separately
-                System.out.println(" Il doit comporter 13 chiffres.");
+                System.out.println("L'ISBN doit comporter 13 chiffres. Veuillez réessayer.");
             }
         }
     }
-
+    
+    
+    
 }
