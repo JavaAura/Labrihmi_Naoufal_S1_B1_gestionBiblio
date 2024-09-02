@@ -27,16 +27,15 @@ public class Bibliotheque {
         if (document instanceof Livre) {
             String id = getNextLivreId();
             document.setId(id);
-            document.setDatePublication(LocalDate.now());
         } else if (document instanceof Magazine) {
             String id = getNextMagazineId();
             document.setId(id);
-            document.setDatePublication(LocalDate.now());
         }
-
+    
         documents.add(document);
         documentMap.put(document.getId(), document);
     }
+    
 
     public void emprunterDocument(String id) {
         Document document = documentMap.get(id);
