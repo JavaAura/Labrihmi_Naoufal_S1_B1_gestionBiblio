@@ -53,29 +53,60 @@ public class ConsoleUI {
             }
         } while (choix != 6);
     }
+    // private void ajouterDocument() {
+    //     System.out.print("Entrez le type de document (livre/magazine) : ");
+    //     String type = scanner.nextLine().trim();
+    //     String titre = demanderInput("titre");
+    //     String auteur = demanderInput("auteur");
+    //     LocalDate datePublication = demanderDatePublication();
+    //     int nombreDePages = demanderNombreDePages();
+    //     scanner.nextLine();
+    
+    //     if ("livre".equalsIgnoreCase(type)) {
+    //         String isbn = demanderISBN();
+    //         Livre livre = new Livre(null, titre, auteur, datePublication, nombreDePages, isbn);
+    //         bibliotheque.ajouterDocument(livre);
+    //         System.out.println("Livre ajouté avec ID : " + livre.getId());
+    //     } else if ("magazine".equalsIgnoreCase(type)) {
+    //         int numero = demanderNumero();
+    //         Magazine magazine = new Magazine(null, titre, auteur, datePublication, nombreDePages, numero);
+    //         bibliotheque.ajouterDocument(magazine);
+    //         System.out.println("Magazine ajouté avec ID : " + magazine.getId());
+    //     } else {
+    //         System.out.println("Type de document inconnu. Veuillez entrer 'livre' ou 'magazine'.");
+    //     }
+    // }
+
     private void ajouterDocument() {
-        System.out.print("Entrez le type de document (livre/magazine) : ");
-        String type = scanner.nextLine().trim();
+        System.out.println("Entrez le type de document :");
+        System.out.println("1. Livre");
+        System.out.println("2. Magazine");
+        System.out.print("Votre choix (1 ou 2) : ");
+        
+        int choixType = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
+    
         String titre = demanderInput("titre");
         String auteur = demanderInput("auteur");
         LocalDate datePublication = demanderDatePublication();
         int nombreDePages = demanderNombreDePages();
         scanner.nextLine();
     
-        if ("livre".equalsIgnoreCase(type)) {
+        if (choixType == 1) { // 1 for Livre
             String isbn = demanderISBN();
             Livre livre = new Livre(null, titre, auteur, datePublication, nombreDePages, isbn);
             bibliotheque.ajouterDocument(livre);
             System.out.println("Livre ajouté avec ID : " + livre.getId());
-        } else if ("magazine".equalsIgnoreCase(type)) {
-            String numero = demanderInput("numéro");
+        } else if (choixType == 2) { // 2 for Magazine
+            int numero = demanderNumero();
             Magazine magazine = new Magazine(null, titre, auteur, datePublication, nombreDePages, numero);
             bibliotheque.ajouterDocument(magazine);
             System.out.println("Magazine ajouté avec ID : " + magazine.getId());
         } else {
-            System.out.println("Type de document inconnu. Veuillez entrer 'livre' ou 'magazine'.");
+            System.out.println("Choix invalide. Veuillez entrer 1 pour Livre ou 2 pour Magazine.");
         }
     }
+    
     
     private void traiterDocument(String action) {
         System.out.print("Entrez l'ID du document à " + action + " : ");
@@ -85,6 +116,17 @@ public class ConsoleUI {
         } else if ("retourner".equals(action)) {
             bibliotheque.retournerDocument(id);
         }
+    }
+    private int demanderNumero() {
+        System.out.print("Entrez le numéro du magazine : ");
+        while (!scanner.hasNextInt()) {
+            System.out.println("Numéro invalide. Veuillez entrer un nombre entier.");
+            scanner.next(); // Clear the invalid input
+            System.out.print("Entrez le numéro du magazine : ");
+        }
+        int numero = scanner.nextInt();
+        scanner.nextLine(); // Consume the newline
+        return numero;
     }
 
     private void rechercherDocument() {
