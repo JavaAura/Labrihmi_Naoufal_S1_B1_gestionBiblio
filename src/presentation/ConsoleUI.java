@@ -53,32 +53,30 @@ public class ConsoleUI {
             }
         } while (choix != 6);
     }
-
     private void ajouterDocument() {
         System.out.print("Entrez le type de document (livre/magazine) : ");
-        String type = scanner.nextLine().trim(); // Read and trim input
+        String type = scanner.nextLine().trim();
         String titre = demanderInput("titre");
         String auteur = demanderInput("auteur");
-        LocalDate datePublication = demanderDatePublication(); // Get the actual publication date
+        LocalDate datePublication = demanderDatePublication();
         int nombreDePages = demanderNombreDePages();
         scanner.nextLine();
     
         if ("livre".equalsIgnoreCase(type)) {
-            String isbn = demanderISBN(); // Ensure ISBN is valid
-            Livre livre = new Livre(Bibliotheque.getNextLivreId(), titre, auteur, datePublication, nombreDePages, isbn);
+            String isbn = demanderISBN();
+            Livre livre = new Livre(null, titre, auteur, datePublication, nombreDePages, isbn);
             bibliotheque.ajouterDocument(livre);
             System.out.println("Livre ajouté avec ID : " + livre.getId());
         } else if ("magazine".equalsIgnoreCase(type)) {
             String numero = demanderInput("numéro");
-            Magazine magazine = new Magazine(Bibliotheque.getNextMagazineId(), titre, auteur, datePublication,
-                    nombreDePages, numero);
+            Magazine magazine = new Magazine(null, titre, auteur, datePublication, nombreDePages, numero);
             bibliotheque.ajouterDocument(magazine);
             System.out.println("Magazine ajouté avec ID : " + magazine.getId());
         } else {
             System.out.println("Type de document inconnu. Veuillez entrer 'livre' ou 'magazine'.");
         }
     }
-
+    
     private void traiterDocument(String action) {
         System.out.print("Entrez l'ID du document à " + action + " : ");
         String id = scanner.nextLine().trim();
