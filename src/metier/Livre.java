@@ -17,7 +17,7 @@ public class Livre extends Document {
 
     @Override
     public void afficherDetails() {
-    System.out.println("Détails du Document :");
+    System.out.println("Détails du Livre :");
     System.out.println("----------------------");
     System.out.println("ID                   : " + getId());
     System.out.println("Titre                : " + getTitre());
