@@ -82,7 +82,7 @@ L'application propose un menu interactif dans la console avec les options suivan
 
 Avant d'exécuter l'application, assurez-vous que les éléments suivants sont installés sur votre machine :
 
-- **Java Development Kit (JDK) 8** : L'application est développée avec Java 8. Vous pouvez télécharger et installer le JDK depuis le site officiel d'[Oracle](https://www.oracle.com/java/technologies/javase-downloads.html) ou utiliser une distribution alternative comme [OpenJDK](https://openjdk.java.net/).
+- **Java Development Kit (JDK) 22** : L'application est développée avec Java 22. Vous pouvez télécharger et installer le JDK depuis le site officiel d'[Oracle](https://www.oracle.com/java/technologies/javase-downloads.html) ou utiliser une distribution alternative comme [OpenJDK](https://openjdk.java.net/).
 
 - **Variable d'environnement `JAVA_HOME`** : Assurez-vous que la variable d'environnement `JAVA_HOME` pointe vers le répertoire d'installation du JDK.
 
