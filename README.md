@@ -73,11 +73,20 @@ L'application propose un menu interactif dans la console avec les options suivan
 5. Rechercher un document.
 6. Quitter.
 
-
 ## Contraintes
 
 - Les données persistent en mémoire jusqu'à la fermeture de l'application.
 - Implémenter une validation des entrées utilisateur pour gérer les erreurs possibles.
+
+## Prérequis
+
+Avant d'exécuter l'application, assurez-vous que les éléments suivants sont installés sur votre machine :
+
+- **Java Development Kit (JDK) 8** : L'application est développée avec Java 8. Vous pouvez télécharger et installer le JDK depuis le site officiel d'[Oracle](https://www.oracle.com/java/technologies/javase-downloads.html) ou utiliser une distribution alternative comme [OpenJDK](https://openjdk.java.net/).
+
+- **Variable d'environnement `JAVA_HOME`** : Assurez-vous que la variable d'environnement `JAVA_HOME` pointe vers le répertoire d'installation du JDK.
+
+- **Mise à jour du `PATH`** : Ajoutez le répertoire `bin` du JDK à votre variable d'environnement `PATH` pour pouvoir exécuter les commandes Java à partir du terminal.
 
 ## Commande pour Exécuter l'Application
 
