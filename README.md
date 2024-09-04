@@ -2,7 +2,7 @@
 
 ## Contexte du Projet
 
-Une bibliothèque municipale souhaite automatiser ses tâches quotidiennes à travers un système de gestion informatisé. Ce projet consiste à développer une application console en Java 8 permettant de gérer efficacement l'inventaire des livres et des magazines, ainsi que les emprunts et les retours.
+Une bibliothèque municipale souhaite automatiser ses tâches quotidiennes à travers un système de gestion informatisé. Ce projet consiste à développer une application console en Java 22 permettant de gérer efficacement l'inventaire des livres et des magazines, ainsi que les emprunts et les retours.
 
 ## Structure de l'Application
 
