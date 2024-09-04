@@ -4,15 +4,6 @@
 
 Une bibliothèque municipale souhaite automatiser ses tâches quotidiennes à travers un système de gestion informatisé. Ce projet consiste à développer une application console en Java 8 permettant de gérer efficacement l'inventaire des livres et des magazines, ainsi que les emprunts et les retours.
 
-## Responsabilités
-
-Votre mission dans ce projet est de :
-
-- Concevoir une architecture en couches (présentation, métier, utilitaire).
-- Implémenter les classes principales et leurs fonctionnalités.
-- Utiliser les concepts de base de Java, notamment l'héritage.
-- Gérer le projet avec Git et JIRA.
-
 ## Structure de l'Application
 
 ### Couche de Présentation
